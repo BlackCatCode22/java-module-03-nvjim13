@@ -1,57 +1,63 @@
-// 9-12-24
-// Mqin.jqvq
-import myanimals.Animal;
-import myanimals.Cat;
-import myanimals.Dog;
-import mystudent.Student;
-import mystudent.App;
+//NVJ 919/24
+// Main.java
+// Driver file for Animal and Hyena class usage
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 
 public class Main {
     public static void main(String[] args) {
 
-        System.out.println("\nHello and welcome from the Main!\n");
+        System.out.println("Welcome to my Zoo Program!");
 
 
-        // Create an student object.
-        Student student = new Student();
+        // Open the arriving animals file.
+        try {
+        BufferedReader bufferedReader = new BufferedReader(new FileReader("/Users/noemivergara/Desktop/Java Projects/JavaStuff/arrivingAnimals.txt"));
+        String myLine;
 
-
-        // Create an object from a runnable class.
-        App app = new App();
-
-        // Use a method from the student class.
-        // I know that I have a static method in the student class
-        // and I know how to call a static class method.
-        Student.sayHello();
-
-
-        // Call a method that belongs to the student object.
-        student.sayHi();
-
-        // Output the number of animals
-        System.out.println("\nThe number of animals is: " + Animal.numOfAnimals);
+        // Read the file one line at a time
+            while ((myLine = bufferedReader.readLine())!=null){
+            System.out.println(myLine);
+        }
+    } catch (IOException e) {
+        throw new RuntimeException(e);
+    }
 
 
 
-        // Create a cat object.
-        Cat cat = new Cat();
-        // Use a method that is available to the Cat object named cat.
-        System.out.println("\nThis sound is coming from the Cat object named cat...");
-        cat.animalSound();
+        // Create an Animal object
+        Animal myAnimalObject = new Animal();
+
+        myAnimalObject.setAge(4);
+
+        // now lets use our new Animal object
+        System.out.println("\nMy animal's age is: " + myAnimalObject.getAge() + " years old.");
 
 
-        //Create a dog object
-        Dog dog = new Dog();
-        // Use a method that is available to the Cat object named dog.
-        System.out.println("\nThis sound is coming from the Dog object named dog...");
-        dog.animalSound();
+        // Create a Hyena object
+        Hyena myNewHyena = new Hyena();
+
+        myNewHyena.setAge(7);
+
+        // output the age of the Hyena
+        System.out.println("\nThe age of our Hyena is: " + myNewHyena.getAge() + " years old.");
 
 
-        // Output the number of animals
-        System.out.println("\nThe number of animals is: " + Animal.numOfAnimals);
+        // Create a lion object
+        Lion myLion = new Lion();
+
+        // Make the lions age 12 years old
+        myLion.setAge(12);
+
+        // output our lions age
+        System.out.println("\nMy lion's age is: " + myLion.getAge() + " years old.");
 
 
+        // output the number of animals
+        System.out.println("\nThe number of animals created is: " + Animal.numOfAnimals);
 
 
 
